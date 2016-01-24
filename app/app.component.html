@@ -1,0 +1,62 @@
+<!--
+  This is the root component.
+ -->
+
+<header>
+  <nav class="navbar navbar-dark bg-inverse">
+    <div class="container">
+      <!-- Logo -->
+      <a
+        [routerLink]="['/Home']"
+        id="logo"
+        class="navbar-brand">
+        &#x5FCD;
+        &#x8005;
+      </a>
+
+      <!-- Navigation links -->
+      <ul class="nav navbar-nav">
+        <li class="nav-item">
+          <a
+            [routerLink]="['/Home']"
+            class="nav-link">
+            Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            [routerLink]="['/Testimonial']"
+            class="nav-link">
+            Testimonial
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            [routerLink]="['/Faq']"
+            class="nav-link">
+            FAQ
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+
+<!-- Page content -->
+<div class="page container">
+  <router-outlet></router-outlet>
+</div>
+
+
+<hr class="m-y-2">
+
+
+<footer>
+  <div class="container">
+    <small >
+      All material here is the property of Robert Hamburger. So shut your mouth or
+      I will kill you. Copyright 2013
+    </small>
+  </div>
+</footer>

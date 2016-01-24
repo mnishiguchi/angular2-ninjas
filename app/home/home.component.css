@@ -1,0 +1,7 @@
+@charset "UTF-8";
+
+.home img {
+  width: 100%;
+  height: auto;
+  border: 2px solid #FFFFFF;
+}
