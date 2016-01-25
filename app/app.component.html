@@ -10,33 +10,25 @@
         [routerLink]="['/Home']"
         id="logo"
         class="navbar-brand">
+        <!-- HTML Unicode for Ninja in Kanji -->
         &#x5FCD;
         &#x8005;
       </a>
 
       <!-- Navigation links -->
       <ul class="nav navbar-nav">
-        <li class="nav-item">
+
+        <li *ngFor="#page of pages"
+          class="nav-item"
+          [class.active]="isSelected( page )"
+          (click)="setSelected( page )">
           <a
-            [routerLink]="['/Home']"
+            [routerLink]="[page]"
             class="nav-link">
-            Home
+            {{ page }}
           </a>
         </li>
-        <li class="nav-item">
-          <a
-            [routerLink]="['/Testimonial']"
-            class="nav-link">
-            Testimonial
-          </a>
-        </li>
-        <li class="nav-item">
-          <a
-            [routerLink]="['/Faq']"
-            class="nav-link">
-            FAQ
-          </a>
-        </li>
+
       </ul>
     </div>
   </nav>

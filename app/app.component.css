@@ -17,3 +17,8 @@ footer {
 .page.container {
   margin-top: 30px;
 }
+
+/* Navbar */
+nav.navbar ul li.nav-item.active {
+  font-weight: bold;
+}
