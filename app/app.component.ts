@@ -6,11 +6,13 @@ import {
 import {
   ROUTER_DIRECTIVES,
   ROUTER_PROVIDERS,
+  Router,
   RouteConfig,
   Location,
   LocationStrategy,
   HashLocationStrategy
 } from 'angular2/router';
+import { Title } from 'angular2/platform/browser';
 
 import { FaqComponent }         from './faq/faq.component';
 import { TestimonialComponent } from './testimonial/testimonial.component';
@@ -24,9 +26,8 @@ import { HomeComponent }        from './home/home.component';
   styleUrls:   [ 'app/app.component.css' ],
   directives:  [ ROUTER_DIRECTIVES ],
   providers:   [ ROUTER_PROVIDERS,
-                   provide( LocationStrategy, {
-                     useClass: HashLocationStrategy
-                   })
+                 provide( LocationStrategy, { useClass: HashLocationStrategy }),
+                 Title
                ]
 })
 @RouteConfig([
@@ -36,20 +37,44 @@ import { HomeComponent }        from './home/home.component';
 ])
 export class AppComponent {
 
-  private baseTitle: string = "The Official Ninja Webpage";
-  private pages: string[]   = [ "Home", "Testimonial", "Faq" ];
+  // Remember the currently selected page id.
   private selectedId: string;
 
+  // Must match the name properties defined in @RouteConfig.
+  private pageIds: string[]  = [ "Home", "Testimonial", "Faq" ];
+
+  // Define page titles.
+  private baseTitle: string  = "The Official Ninja Webpage";
+  private pageTitles: Object = {
+    home:        "Home | "        + this.baseTitle,
+    testimonial: "Testimonial | " + this.baseTitle,
+    faq:         "Faq | "         + this.baseTitle
+  };
+
+
   // Inject the Location service.
-  constructor( private _location: Location ) {}
+  constructor( private location: Location,
+               private title: Title,
+               private router: Router ) {
+
+    // Update the selected page on every path change.
+    router.subscribe( ( path ) => {
+      this.setSelected( path );
+    });
+
+  }
 
   // Initialize the selectedId based on the current path.
   ngOnInit() {
-    var path = this._location.path();
 
-    this.selectedId = ( path.length < 1 )
-                    ? "Home"
-                    : path.substring( 1 );
+    // Detect the current path.
+    let path = this.location.path();
+
+    // Generate an ID based on the pathname.
+    let id = ( path.length < 1 ) ? "home" : path.substring( 1 );
+
+    // Initialize the selected ID.
+    this.setSelected( id );
 
   } // end ngOnInit
 
@@ -61,7 +86,7 @@ export class AppComponent {
    */
   private isSelected( id: string ) {
 
-    return this.selectedId.toUpperCase() === id.toUpperCase();
+    return this.selectedId.toLowerCase() === id.toLowerCase();
 
   } // end isSelected
 
@@ -73,10 +98,11 @@ export class AppComponent {
   private setSelected( id: string ) {
 
     // Update the selectedId.
-    this.selectedId = id;
+    this.selectedId = id.toLowerCase();
 
     // Update the page title.
-    window.document.title = [ id, " | ", this.baseTitle ].join("");
+    let title = this.pageTitles[ this.selectedId ];
+    this.title.setTitle( title );
 
   } // end setSelected
 

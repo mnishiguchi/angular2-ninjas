@@ -7,9 +7,9 @@
     <div class="container">
       <!-- Logo -->
       <a
-        [routerLink]="['/Home']"
+        [routerLink]="['Home']"
         id="logo"
-        class="navbar-brand">
+        class="navbar-brand" >
         <!-- HTML Unicode for Ninja in Kanji -->
         &#x5FCD;
         &#x8005;
@@ -18,10 +18,9 @@
       <!-- Navigation links -->
       <ul class="nav navbar-nav">
 
-        <li *ngFor="#page of pages"
+        <li *ngFor="#page of pageIds"
           class="nav-item"
-          [class.active]="isSelected( page )"
-          (click)="setSelected( page )">
+          [class.active]="isSelected( page )" >
           <a
             [routerLink]="[page]"
             class="nav-link">
