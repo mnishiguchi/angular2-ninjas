@@ -1,7 +1,9 @@
-@charset "UTF-8";
+h1 {
+  margin: 20px 0;
+}
 
-.faq img {
-  width: 300px;
+img {
+  max-width: 300px;
   height: auto;
   border: 4px solid #FFFFFF;
 }

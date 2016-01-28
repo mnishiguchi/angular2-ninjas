@@ -17,9 +17,8 @@
       height: 100%;
       -webkit-font-smoothing: antialiased;
     }
-
     body {
-      background: #cdcdcd;
+      background: #DEDEDE;
       width: 100%;
       height: 100%;
       font-family: 'Open Sans', sans-serif;
@@ -29,11 +28,22 @@
   <base href="/">
 
   <!-- Load angular2-related libraries -->
-  <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
-  <script src="node_modules/systemjs/dist/system.src.js"></script>
-  <script src="node_modules/rxjs/bundles/Rx.js"></script>
-  <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.34.2/es6-shim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.17/system-polyfills.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/2.0.0-beta.1/angular2-polyfills.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.17/system.src.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/2.0.0-beta.1/Rx.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/2.0.0-beta.1/angular2.dev.js"></script>
   <script src="node_modules/angular2/bundles/router.dev.js"></script>
+
+  <!--
+    <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <script src="node_modules/rxjs/bundles/Rx.js"></script>
+    <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+    <script src="node_modules/angular2/bundles/router.dev.js"></script>
+   -->
 
   <!-- Configure SystemJS -->
   <script>

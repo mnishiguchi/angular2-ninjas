@@ -21,19 +21,25 @@ import { HomeComponent }        from './home/home.component';
 // Defines the AppComponent, which is the root component.
 
 @Component({
+
   selector:    'app',
   templateUrl: 'app/app.component.html',
   styleUrls:   [ 'app/app.component.css' ],
+
   directives:  [ ROUTER_DIRECTIVES ],
+
   providers:   [ ROUTER_PROVIDERS,
                  provide( LocationStrategy, { useClass: HashLocationStrategy }),
                  Title
                ]
+
 })
 @RouteConfig([
+
   { path: '/home',        name: 'Home',        component: HomeComponent, useAsDefault: true },
   { path: '/testimonial', name: 'Testimonial', component: TestimonialComponent },
   { path: '/faq',         name: 'Faq',         component: FaqComponent }
+
 ])
 export class AppComponent {
 
